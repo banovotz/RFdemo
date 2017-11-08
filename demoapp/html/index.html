@@ -6,18 +6,25 @@
   <script type="text/javascript">
     function login(username, password) {
         if (username == "demo" && password == "mode") {
-            window.location = "welcome.html";
+            window.location = "dashboard.html";
+            sessionStorage.setItem("SessionName","secretsession");
         } else {
             window.location = "error.html";
-        }
+        }   
+        
     }
+    
+    if (sessionStorage.getItem("SessionName") == "secretsession") {
+    	window.location="dashboard.html";
+    
+    	}
   </script>
 </head>
 <body>
   <div id="container">
     <h1>Login Page</h1>
       <p>Please input your user name and password and click the login button.</p>
-      <form name="login_form" onsubmit="login(this.username_field.value, this.password_field.value); return false;">
+      <form name="login_form" onsubmit="login(this.username_field.value, this.password_field.value); return false;" method="GET">
         <table>
           <tr>
             <td><label for="username_field">User Name:</label></td>
